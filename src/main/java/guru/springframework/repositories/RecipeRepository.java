@@ -1,4 +1,7 @@
 package guru.springframework.repositories;
 
-public interface RecipeRepository {
+import guru.springframework.domain.Receipe;
+import org.springframework.data.repository.CrudRepository;
+
+public interface RecipeRepository extends CrudRepository <Receipe, Long> {
 }
