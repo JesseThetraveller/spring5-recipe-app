@@ -1,21 +1,23 @@
 package guru.springframework.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Receipe {
+public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String description;
-    private String prepTime;
+    private int prepTime;
     private Integer cookTime;
     private Integer servings;
     private String source;
     private String url;
+    @Lob
     private String directions;
     @Enumerated(value=EnumType.STRING)
     private Difficulty difficulty;
@@ -25,12 +27,12 @@ public class Receipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "receipe")
-    private Set<Ingredient>ingredients;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient>ingredients = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name="receipe_category", joinColumns = @JoinColumn(name="receipe_id"), inverseJoinColumns = @JoinColumn(name="category_id"))
-    private Set<Category> categories;
+    @JoinTable(name="recipe_category", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="category_id"))
+    private Set<Category> categories = new HashSet<>();
 
     //Getter/Setter
 
@@ -58,11 +60,11 @@ public class Receipe {
         this.description = description;
     }
 
-    public String getPrepTime() {
+    public int getPrepTime() {
         return prepTime;
     }
 
-    public void setPrepTime(String prepTime) {
+    public void setPrepTime(int prepTime) {
         this.prepTime = prepTime;
     }
 

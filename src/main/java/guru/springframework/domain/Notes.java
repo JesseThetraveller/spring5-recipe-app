@@ -10,10 +10,10 @@ public class Notes {
     private long id;
 
     @OneToOne
-    private Receipe receipe;
+    private Recipe recipe;
 
     @Lob
-    private String receipeNotes;
+    private String recipeNotes;
 
 
     //Getter/Setter
@@ -25,19 +25,21 @@ public class Notes {
         this.id = id;
     }
 
-    public Receipe getReceipe() {
-        return receipe;
+    public Recipe getRecipe() {
+        return recipe;
     }
 
-    public void setReceipe(Receipe receipe) {
-        this.receipe = receipe;
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 
-    public String getReceipeNotes() {
-        return receipeNotes;
+    public String getRecipeNotes() {
+        return recipeNotes;
     }
 
-    public void setReceipeNotes(String receipeNotes) {
-        this.receipeNotes = receipeNotes;
+    public void setRecipeNotes(String recipeNotes) {
+        this.recipeNotes = recipeNotes;
     }
+
+
 }
